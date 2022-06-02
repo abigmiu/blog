@@ -1,22 +1,22 @@
+import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { TransformInterceptor } from './interceptor/transform.interceptor';
+import bootStrap from './bootstrap';
 
-async function bootstrap() {
+async function main() {
     const app = await NestFactory.create(AppModule);
-    app.setGlobalPrefix('/api');
+    const config = app.get(ConfigService);
+
+    const globalPrefix = config.get('globalPrefix');
+    app.setGlobalPrefix(globalPrefix);
+
     app.useGlobalInterceptors(new TransformInterceptor());
-    const options = new DocumentBuilder()
-        .setTitle('Blog Api')
-        .setDescription('The Blog Api Description')
-        .setVersion('1.0')
-        .build();
 
-    const document = SwaggerModule.createDocument(app, options);
-    SwaggerModule.setup('doc', app, document);
+    bootStrap(app);
 
-    await app.listen(3005);
-    console.log('app running in 3005');
+    const port = config.get('port');
+    await app.listen(port);
+    console.log(`app running in ${port}`);
 }
-bootstrap();
+main();
