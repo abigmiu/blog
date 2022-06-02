@@ -1,32 +1,38 @@
-import { CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn, Column } from 'typeorm'
+import {
+    CreateDateColumn,
+    Entity,
+    PrimaryGeneratedColumn,
+    UpdateDateColumn,
+    Column,
+} from 'typeorm';
 
 @Entity()
 export class Article {
     @PrimaryGeneratedColumn()
-    id: number
+    id: number;
 
     @CreateDateColumn()
-    createAt: Date
+    createAt: Date;
 
     @UpdateDateColumn()
-    updateAt: Date
-
-    @Column({
-        default: false
-    })
-    isDel: boolean
+    updateAt: Date;
 
     @Column({
         default: false,
     })
-    isTop: boolean
+    isDel: boolean;
+
+    @Column({
+        default: false,
+    })
+    isTop: boolean;
 
     @Column('text')
-    title: string
+    title: string;
 
     @Column('text')
-    intro: string
+    intro: string;
 
     @Column('text')
-    content: string
+    content: string;
 }

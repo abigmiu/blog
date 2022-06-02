@@ -11,9 +11,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
             host: 'localhost',
             port: 3306,
             username: 'root',
-            password: '22d02ef3dc2160b6',
+            password: '123456',
             database: 'blog',
-            entities: ['dist/db/**/*.entity.ts']
+            entities: [__dirname + '/db/**/*.entity{.js,.ts}'],
+            synchronize: true,
         }),
         ArticleModule,
     ],

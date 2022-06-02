@@ -1,19 +1,11 @@
-import {
-    Controller,
-    DefaultValuePipe,
-    Get,
-    ParseIntPipe,
-    Query,
-    Post,
-    Body,
-} from '@nestjs/common';
+import { Controller, DefaultValuePipe, Get, ParseIntPipe, Query, Post, Body } from '@nestjs/common';
 import { ApiQuery, ApiTags } from '@nestjs/swagger';
 import { ArticleService } from './article.service';
 import type { IArticleAdd } from 'src/common/models/article';
 
 import { CreateDto } from './dto/create';
-import { UpdateDto } from './dto/update'
-import { PageDto } from './dto/page'
+import { UpdateDto } from './dto/update';
+import { PageDto } from './dto/page';
 
 @ApiTags('01.文章')
 @Controller('article')
@@ -50,7 +42,7 @@ export class ArticleController {
     }
 
     @Post()
-    create(@Body() article: IArticleAdd) {
-        return this.articleService.create(article)
+    create(@Body() articleCreateDTO: CreateDto) {
+        return this.articleService.create(articleCreateDTO);
     }
 }
