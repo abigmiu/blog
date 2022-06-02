@@ -1,5 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import type { IArticle, IArticleAdd } from 'src/common/models/article';
+import { CreateDto } from './dto/create';
+import { UpdateDto } from './dto/update';
+import { IdDto } from './dto/id';
+import { Article } from 'src/db/article/article.entity';
+import { PageDto } from './dto/page';
+import { InjectRepository } from '@nestjs/typeorm'
+import { Repository } from 'typeorm'
 
 @Injectable()
 export class ArticleService {
@@ -7,7 +14,10 @@ export class ArticleService {
 
     private uid: number
 
-    constructor() {
+    constructor(
+        @InjectRepository(Article)
+        private readonly articleRepository: Repository<Article>
+    ) {
         this.list = []
         this.uid = 0
     }
