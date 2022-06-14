@@ -4,7 +4,7 @@ import { CreateDto } from './dto/create';
 import { UpdateDto } from './dto/update';
 import { IdDto } from './dto/id';
 import { Article } from 'src/db/article/article.entity';
-import { PageDto } from './dto/page';
+import { ArticlePageDto } from './dto/page';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 

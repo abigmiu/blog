@@ -1,4 +1,6 @@
+import { IsInt } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
+import { Type } from 'class-transformer';
 
 export default class PageDto {
     @ApiProperty({
@@ -7,7 +9,9 @@ export default class PageDto {
         default: 1,
         required: false,
     })
-    page: number;
+    @Type(() => Number)
+    @IsInt({ message: 'page 只能为数字' })
+    page?: number;
 
     @ApiProperty({
         description: '每页数量',
@@ -15,5 +19,7 @@ export default class PageDto {
         default: 10,
         required: false,
     })
-    size: number;
+    @Type(() => Number)
+    @IsInt({ message: 'size 只能为数字' })
+    size?: number;
 }

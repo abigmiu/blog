@@ -12,6 +12,7 @@ function initSwagger(app: INestApplication, config: ConfigService) {
 
     const swaggerPrefix = config.get('swaggerPrefix');
     SwaggerModule.setup(swaggerPrefix, app, document);
+    console.log('swagger 文档前缀', swaggerPrefix);
 }
 
 export default function bootStrap(app: INestApplication) {
