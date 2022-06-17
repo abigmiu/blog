@@ -35,4 +35,10 @@ export class Article {
 
     @Column('text')
     content: string;
+
+    @Column('int')
+    tagId: number;
+
+    @Column('int')
+    categoryId: number;
 }

@@ -1,12 +1,12 @@
 import { Controller, Get, Query } from '@nestjs/common';
 import { ApiOperation, ApiQuery, ApiTags } from '@nestjs/swagger';
-import { UserService } from './user.service';
+import { AdminUserService } from './user.service';
 import PageDto from 'src/common/dto/page/page.dto';
 
 @ApiTags('用户')
 @Controller('admin/user')
-export class UserController {
-    constructor(private userService: UserService) {}
+export class AdminUserController {
+    constructor(private userService: AdminUserService) {}
 
     @Get()
     @ApiOperation({

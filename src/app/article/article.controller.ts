@@ -1,5 +1,5 @@
 import { Controller, Get, Query, Post, Body } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiProperty, ApiTags } from '@nestjs/swagger';
 import { ArticleService } from './article.service';
 import type { IArticleAdd } from 'src/common/models/article';
 
@@ -22,8 +22,8 @@ export class ArticleController {
         return '文章详情';
     }
 
-    @Post()
-    create(@Body() articleCreateDTO: CreateDto) {
-        return this.articleService.create(articleCreateDTO);
-    }
+    // @Post()
+    // create(@Body() articleCreateDTO: CreateDto) {
+    //     return this.articleService.create(articleCreateDTO);
+    // }
 }
