@@ -1,12 +1,12 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, Length } from 'class-validator';
+import { IsNotEmpty, MinLength, MaxLength } from 'class-validator';
 export class AdminArticleCreateDto {
     @ApiProperty({
         description: '标题',
         default: '标题',
     })
-    @Length(5, 30, {
-        message: '字数为5-30个字',
+    @MinLength(5, {
+        message: '标题字数不能小于5个字'
     })
     title: string;
 
