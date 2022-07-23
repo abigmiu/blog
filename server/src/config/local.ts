@@ -16,5 +16,5 @@ export default {
     },
     port: 3005, // 端口
     globalPrefix: '/api', // api 前缀
-    swaggerPrefix: '/doc', // 文档前缀
+    swaggerPrefix: '/api/doc', // 文档前缀
 };
